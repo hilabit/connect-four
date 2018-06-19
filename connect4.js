@@ -1,23 +1,21 @@
 (function() {
 $('.victory').css({'visibility':'hidden'},{'display':'none'});
-var curPlayer = 'green-green'; //start with someone
-var slots;
+var curPlayer = 'green-green';
 var horizontalSlots;
 var counter;
 $('.column').on('click', function (e) {
-     slots = $(e.currentTarget).find('.slot');   //find the slot that's on the selected column
-    //slot is not a direct child of column, thus using the find function
+     slots = $(e.currentTarget).find('.slot');
 //========who's on====
-    for(var i = 5; i>=0; i--) {   //we're itirating through slots as divs on the chosen column
+    for(var i = 5; i>=0; i--) {
         if(!slots.eq(i).hasClass('green-green') && !slots.eq(i).hasClass('light-green')) {
-            slots.eq(i).addClass(curPlayer); //eq converts the itirated divs to jQuery lingo
-            break;  //stop the loop
+            slots.eq(i).addClass(curPlayer);
+            break;
         }
     }
 //====================
     checkVerticalVictory(slots);
     checkHorizontalVictory();
-    if(curPlayer == 'green-green') {   //change player by assigning new class
+    if(curPlayer == 'green-green') {
         curPlayer = 'light-green';
     } else {
         curPlayer = 'green-green';
@@ -60,22 +58,22 @@ function checkVerticalVictory(slots) {
     }
   }
  function victory(curPlayer) {
-     setTimeout(function() {$('.victoryModal').css(('display', 'block'),500)
-         $('body').css('background', 'black');
-         // if (curPlayer = green-green) {
-         //     $('.victoryModal').css('background-color', '#009688')
-         // } else {
-         //     $('.victoryModal').css('background-color', '#dcef27')
-         // }
 
-    }
+   setTimeout(function() {$('.victoryModal').css('display', 'block')},500)
+   $('body').css('background', 'black');
+   if (curPlayer = 'green-green') {
+             $('.victoryModal').css('background-color', '#009688')
+         } if (curPlayer = 'light-green'){
+             $('.victoryModal').css('background-color', '#dcef27')
+         }
+          $('.content-victorymodal').append('<h2>CONGRATULATIONS ' + curPlayer + '!!</h2>');
+
+
+ }
 
 
 
- // function showModal() {
- //     $(<h2>CONGRATULATIONS {curPlayer}!!</h2>)
- //
- // }
+//=================optional grafics for winning======================
 
 
 
